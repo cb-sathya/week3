@@ -25,18 +25,14 @@ class jdbcPhoneDirectory{
 	
 					//Create the table
     public static void createTable(Connection con) throws SQLException{
-    		String createDataBaseString=
-    			"use phone_directory;";
-    		String createTableString=
-    			"create table phone_directory.directory (name varchar(10) not null,address varchar(20) not null,mobile varchar(10),home varchar(10),work varchar(10));";
-    		String dropDataBaseString=
-    			"drop table if exists phone_directory.directory ;";
+    	
+    		String dropTableString=
+    			"drop table if exists phone_directory.directory;"; 
+    		String createTableString="create table phone_directory.directory (name varchar(10) not null,address varchar(20) not null,mobile varchar(10),home varchar(10),work varchar(10));";
     		PreparedStatement tableStatement=null;
     		try{
     			con.setAutoCommit(false);
-    			tableStatement=con.prepareStatement(dropDataBaseString);
-    			tableStatement.executeUpdate();
-    			tableStatement=con.prepareStatement(createDataBaseString);
+    			tableStatement=con.prepareStatement(dropTableString);
 			tableStatement.executeUpdate();
     			tableStatement=con.prepareStatement(createTableString);
 			tableStatement.executeUpdate();
